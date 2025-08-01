@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Cadastro de Tarefas</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
         <section>
             <form id="task-form">
                 <label for="task-title">Título da Tarefa:</label>
-                <input type="text" id="task-title" required>
+                <input type="text" id="task-title" required />
 
                 <label for="task-description">Descrição:</label>
                 <textarea id="task-description" required></textarea>
@@ -22,9 +22,13 @@
                 <button type="submit">Adicionar Tarefa</button>
             </form>
         </section>
-        
+
         <section id="task-list">
             <h2>Tarefas</h2>
+
+            <label for="search">Buscar Tarefa:</label>
+            <input type="text" id="search" placeholder="Digite para buscar..." />
+
             <ul id="tasks"></ul>
         </section>
     </main>

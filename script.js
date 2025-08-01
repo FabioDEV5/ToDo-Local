@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     renderTasks();
+
+    document.getElementById('search').addEventListener('input', () => {
+        const searchTerm = document.getElementById('search').value.trim().toLowerCase();
+        renderTasks(searchTerm);
+    });
 });
 
 document.getElementById('task-form').addEventListener('submit', (event) => {
@@ -22,13 +27,18 @@ const saveTask = (task) => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-const renderTasks = () => {
+const renderTasks = (searchTerm = '') => {
     const taskList = document.getElementById('tasks');
     taskList.innerHTML = '';
 
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-    tasks.forEach(({ title, description }, index) => {
+    const filteredTasks = tasks.filter(({ title, description }) =>
+        title.toLowerCase().includes(searchTerm) ||
+        description.toLowerCase().includes(searchTerm)
+    );
+
+    filteredTasks.forEach(({ title, description }, index) => {
         const li = document.createElement('li');
         li.innerHTML = `<strong>${title}</strong>: ${description} 
             <button onclick="removeTask(${index})">Remover</button>`;
@@ -40,5 +50,5 @@ const removeTask = (indexToRemove) => {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const updatedTasks = tasks.filter((_, index) => index !== indexToRemove);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
-    renderTasks();
+    renderTasks(document.getElementById('search').value.trim().toLowerCase());
 };

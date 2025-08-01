@@ -48,6 +48,15 @@ button:hover {
     margin-top: 20px;
 }
 
+#search {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
 #tasks li {
     background: #fff;
     padding: 10px;

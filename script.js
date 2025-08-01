@@ -28,9 +28,17 @@ const renderTasks = () => {
 
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-    tasks.forEach(({ title, description }) => {
+    tasks.forEach(({ title, description }, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `<strong>${title}</strong>: ${description}`;
+        li.innerHTML = `<strong>${title}</strong>: ${description} 
+            <button onclick="removeTask(${index})">Remover</button>`;
         taskList.appendChild(li);
     });
+};
+
+const removeTask = (indexToRemove) => {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    const updatedTasks = tasks.filter((_, index) => index !== indexToRemove);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    renderTasks();
 };

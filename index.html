@@ -11,6 +11,7 @@
         <header>
             <h1>Cadastro de Tarefas</h1>
         </header>
+
         <section>
             <form id="task-form">
                 <label for="task-title">Título da Tarefa:</label>
@@ -22,7 +23,16 @@
                 <button type="submit">Adicionar Tarefa</button>
             </form>
         </section>
-        
+
+        <section id="task-search-section">
+            <label for="task-search">Buscar Tarefas:</label>
+            <input
+                type="text"
+                id="task-search"
+                placeholder="Digite para buscar..."
+            >
+        </section>
+
         <section id="task-list">
             <h2>Tarefas</h2>
             <ul id="tasks"></ul>
